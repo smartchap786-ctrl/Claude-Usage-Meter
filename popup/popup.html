@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Claude Usage</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <header class="hdr">
+    <div class="hdr-left">
+      <img class="brand-logo" id="loading-dot" src="../icons/icon48.png" alt="Claude Usage Meter logo" />
+      <h1>Claude Usage Meter</h1>
+    </div>
+    <div class="hdr-right">
+      <button id="refresh-btn" class="icon-btn" title="Refresh now" aria-label="Refresh">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
+      </button>
+      <a href="#" id="open-options" class="icon-btn" title="Settings" aria-label="Settings">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <div id="error-banner" class="error-banner hidden"></div>
+
+    <button id="show-strip-btn" class="btn-strip-cta">
+      <span class="btn-strip-cta-glow"></span>
+      <svg class="btn-strip-cta-ic" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="9" x2="21" y2="9"></line><rect x="3" y="4" width="18" height="16" rx="2"></rect></svg>
+      <span class="btn-strip-cta-txt">Show Usage Strip above Chat</span>
+    </button>
+
+    <section class="card" id="session-card">
+      <div class="row">
+        <span class="lbl">Session · 5-hour</span>
+        <span class="pct" id="session-pct">—</span>
+      </div>
+      <div class="bar"><div class="bar-fill" id="session-fill"></div></div>
+      <div class="sub" id="session-sub">Fetching…</div>
+    </section>
+
+    <section class="card" id="weekly-card">
+      <div class="row">
+        <span class="lbl" id="weekly-lbl">Weekly</span>
+        <span class="pct" id="weekly-pct">—</span>
+      </div>
+      <div class="bar"><div class="bar-fill" id="weekly-fill"></div></div>
+      <div class="sub" id="weekly-sub">Fetching…</div>
+    </section>
+
+    <div id="msgs-left" class="msgs-left hidden">
+      <span class="msgs-left-label">Messages left this session</span>
+      <span class="msgs-left-val" id="msgs-left-val">—</span>
+    </div>
+
+    <div id="empty-hint" class="empty-hint hidden">
+      Sign in to <strong>claude.ai</strong> in this browser. Click the refresh icon to retry.
+    </div>
+
+    <div id="test-result" class="test-result hidden"></div>
+
+    <footer>
+      <button id="test-btn" class="btn-ghost">Test notification</button>
+      <button id="reset-btn" class="btn-ghost">Reset</button>
+    </footer>
+
+    <button id="rate-btn" class="btn-rate hidden">
+      <span class="btn-rate-star">⭐️</span>
+      <span>Rate us</span>
+    </button>
+    <div class="updated" id="updated"></div>
+  </main>
+
+  <script src="popup.js"></script>
+</body>
+</html>

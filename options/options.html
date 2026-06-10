@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Claude Usage Meter · Settings</title>
+  <link rel="stylesheet" href="options.css" />
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand-dot"></div>
+      <h1>Claude Usage Meter</h1>
+      <p class="tagline">Configure notifications and chat behaviour.</p>
+    </header>
+
+    <section class="card">
+      <div class="card-head">
+        <h2>Session (5-hour) thresholds</h2>
+        <p>Notifications for the rolling 5-hour message window.</p>
+      </div>
+      <div class="threshold-grid" id="session-grid"></div>
+      <div class="add-row">
+        <input type="number" id="session-input" min="1" max="100" placeholder="e.g. 70" />
+        <button id="session-add" class="btn-primary">Add</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="card-head">
+        <h2>Weekly thresholds</h2>
+        <p>Applied to whichever weekly quota you're using (Sonnet, Opus, Haiku). Each fires once per cycle when crossed.</p>
+      </div>
+      <div class="threshold-grid" id="weekly-grid"></div>
+      <div class="add-row">
+        <input type="number" id="weekly-input" min="1" max="100" placeholder="e.g. 60" />
+        <button id="weekly-add" class="btn-primary">Add</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="card-head">
+        <h2>Polling &amp; notifications</h2>
+      </div>
+      <label class="row-label">
+        <span>Refresh every</span>
+        <span class="inline-num">
+          <input type="number" id="poll-minutes" min="1" max="60" />
+          <span>minutes</span>
+        </span>
+      </label>
+      <label class="toggle-row">
+        <span>Enable desktop notifications</span>
+        <input type="checkbox" id="notifications-enabled" />
+      </label>
+    </section>
+
+
+    <div class="actions">
+      <button id="save" class="btn-primary">Save settings</button>
+      <span id="saved-msg" class="saved-msg">Saved.</span>
+    </div>
+
+    <footer>
+      <p><strong>How it works.</strong> The extension polls <code>GET /api/organizations/{id}/usage</code> using your existing browser session cookie. The weekly card auto-labels with whichever Claude model you're actively using on claude.ai.</p>
+      <p class="note">These endpoints are undocumented. If Anthropic changes them, an update may be needed.</p>
+    </footer>
+  </div>
+  <script src="options.js"></script>
+</body>
+</html>
