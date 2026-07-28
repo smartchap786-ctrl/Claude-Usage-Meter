@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json.schemastore.org/claude-plugin-marketplace.json",
+  "name": "my-claude-plugins",
+  "description": "My custom marketplace for Claude Code plugins",
+  "plugins": [
+    {
+      "name": "claude-usage-meter",
+      "description": "Tracks usage metrics for Claude",
+      "source": "./"
+    }
+  ]
+}
