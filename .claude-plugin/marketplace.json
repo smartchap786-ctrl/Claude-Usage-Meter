@@ -6,7 +6,7 @@
     {
       "name": "claude-usage-meter",
       "description": "Tracks usage metrics for Claude",
-      "source": "./"
+      "source": "./plugins/claude-usage-meter"
     }
   ]
 }
