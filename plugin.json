@@ -1,7 +1,7 @@
 {
   "name": "claude-usage-meter",
   "version": "1.0.0",
-  "description": "Claude usage tracking tool",
+  "description": "Claude usage tracking tool for CLI",
   "mcpServers": {
     "usage-meter": {
       "command": "node",
